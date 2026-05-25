@@ -1,0 +1,83 @@
+  /* Umumiy reset va dizayn sozlamalari */
+        * { box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        body { margin: 0; padding: 0; background-color: #eef2f6; display: flex; justify-content: center; height: 100vh; overflow: hidden; }
+        
+        /* Asosiy ilova oynasi */
+        .app-container { width: 100%; max-width: 450px; background-color: #eef2f6; position: relative; height: 100%; display: flex; flex-direction: column; }
+        
+        /* Sarlavha */
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 20px; border-bottom: 1px solid #dce4ec; }
+        .header h1 { margin: 0; font-size: 20px; font-weight: 600; color: #2c3e50; flex-grow: 1; text-align: center; }
+        .icon-placeholder { width: 24px; height: 24px; opacity: 0.5; }
+
+        /* Asosiy kontent maydoni */
+        .content { padding: 20px; flex-grow: 1; overflow-y: auto; }
+        
+        /* OTP Karta dizayni (Rasmga moslashtirilgan) */
+        .otp-card { background: #ffffff; border-radius: 16px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); display: none; margin-bottom: 15px; position: relative; }
+        .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+        .site-info { display: flex; flex-direction: column; }
+        .site-name { color: #167bc4; font-weight: 700; font-size: 13px; text-transform: uppercase; margin-bottom: 3px; }
+        .user-name { color: #7f8c8d; font-size: 12px; }
+        .timer { font-size: 13px; color: #7f8c8d; font-weight: 500; display: flex; align-items: center; gap: 5px; }
+        .timer-sec { color: #2c3e50; font-weight: 700; }
+        .otp-code { font-size: 38px; font-weight: 700; color: #34495e; letter-spacing: 2px; margin-top: 5px; }
+        
+        /* Bo'sh holat */
+        .empty-state { text-align: center; color: #95a5a6; margin-top: 50px; font-size: 15px; }
+
+        /* Suzuvchi "+" tugmasi */
+        .fab { position: absolute; bottom: 30px; right: 30px; width: 60px; height: 60px; background-color: #3498db; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 30px; font-weight: bold; border: none; box-shadow: 0 6px 16px rgba(52, 152, 219, 0.4); cursor: pointer; transition: transform 0.2s; z-index: 100; }
+        .fab:active { transform: scale(0.95); }
+
+        /* =========================================
+           SKANERLASH OYNASI (Yashil ramka bilan)
+           ========================================= */
+        #scanner-view { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 1000; display: none; flex-direction: column; }
+        .video-wrapper { position: relative; flex-grow: 1; width: 100%; overflow: hidden; display: flex; justify-content: center; align-items: center; }
+        #webcam { position: absolute; width: 100%; height: 100%; object-fit: cover; }
+        
+        /* Qorong'ilashtiruvchi fon va yashil ramka */
+        .scan-overlay { position: absolute; inset: 0; display: flex; justify-content: center; align-items: center; pointer-events: none; }
+        .scan-frame { width: 250px; height: 250px; border: 4px solid #2ecc71; border-radius: 12px; box-shadow: 0 0 0 2000px rgba(0,0,0,0.6); position: relative; }
+        
+        /* Ramka ichidagi skanerlash animatsiyasi (chiziq) */
+        .scan-frame::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: #2ecc71; box-shadow: 0 0 8px #2ecc71; animation: scanLine 2s infinite linear; }
+        @keyframes scanLine { 0% { top: 0; } 50% { top: 100%; } 100% { top: 0; } }
+
+        /* Skaner pastki boshqaruv paneli */
+        .scanner-controls { padding: 20px; background: #111; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+        .btn { padding: 12px 20px; border-radius: 8px; border: none; font-weight: 600; font-size: 14px; cursor: pointer; text-align: center; flex: 1; color: white; }
+        .btn-cancel { background: #e74c3c; }
+        .btn-upload { background: #3498db; }
+        .file-input-hidden { display: none; }
+
+        .btn-primary {
+    background: #2481cc;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 14px;
+    width: 100%;
+    margin-bottom: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.secrets-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.secrets-list li {
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    border-left: 4px solid #2481cc;
+}

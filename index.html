@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Autentifikator</title>
+<script src="https://cdn.jsdelivr.net/npm/otplib@13.4.0/dist/index.global.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+    <script defer src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="./style.css">
+  
+</head>
+<body>
+
+<div class="app-container">
+    <div class="header">
+        <div class="icon-placeholder"><i class="fas fa-cog"></i></div>
+        <h1>Autentifikator</h1>
+        <div class="icon-placeholder"><i class="fas fa-cloud"></i></div>
+    </div>
+
+    <div class="content">
+        <div class="action-box">
+            <button id="fetchSecretsBtn" class="btn-primary" onclick="displaySecrets()">
+                <i class="fas fa-key"></i> Kalitlarimni ko'rish
+            </button>
+            <ul id="secrets-list" class="secrets-list"></ul>
+        </div>
+
+        <div class="empty-state" id="empty-state">
+            Hozircha hisoblar yo'q.<br>Qo'shish uchun pastdagi "+" tugmasini bosing.
+        </div>
+
+        <div class="otp-card" id="otp-card" style="display: none;">
+            <div class="card-top">
+                <div class="site-info">
+                    <div class="site-name">EDO.IJRO.UZ</div>
+                    <div class="user-name">Foydalanuvchi</div>
+                </div>
+                <div class="timer">
+                    <span class="timer-sec" id="timer-display">30</span> s
+                </div>
+            </div>
+            <div class="otp-code" id="otp-display">--- ---</div>
+        </div>
+    </div>
+
+    <button class="fab" id="fab-btn">+</button>
+</div>
+
+<div id="scanner-view">
+    <div class="video-wrapper">
+        <video id="webcam" autoplay playsinline muted></video>
+        <div class="scan-overlay">
+            <div class="scan-frame"></div>
+        </div>
+    </div>
+    <div class="scanner-controls">
+        <button class="btn btn-cancel" id="btn-cancel"><i class="fas fa-times"></i> Bekor</button>
+        <label class="btn btn-upload" for="file-upload"><i class="fas fa-upload"></i> Fayl</label>
+        <input type="file" id="file-upload" class="file-input-hidden" accept="image/*">
+    </div>
+</div>
+
+<script defer src="./script.js"></script>
+</body>
+</html>
