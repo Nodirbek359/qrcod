@@ -8,12 +8,26 @@ if (typeof window.otplib === 'undefined') {
 }
 // Global o'zgaruvchi
 const telegramUser = window.Telegram?.WebApp?.initDataUnsafe?.user;
-const USER_ID = telegramUser?.id || 2041858446; // Agar Telegram bo'lmasa, default ID
+
 // =========================================================================
 // API BOG'LANISH MANTIG'I
 // =========================================================================
 const API_URL = "https://neotech-api.onrender.com";
 
+
+// script.js
+// 1. URL parametrlarni o'qib olish
+const urlParams = new URLSearchParams(window.location.search);
+const USER_ID = urlParams.get('userId') || window.Telegram.WebApp.initDataUnsafe?.user?.id;
+
+// 2. Agar userId topilsa, uni loyihada ishlatamiz
+if (USER_ID) {
+    console.log("Foydalanuvchi ID olindi:", USER_ID);
+    // Shu yerdan keyin bazadan ma'lumotlarni tortish funksiyasini chaqirasiz
+    displaySecrets(); 
+} else {
+    console.error("Foydalanuvchi ID topilmadi!");
+}
 
 // 1. Ma'lumot yuborish (POST)
 async function saveScanDataToDatabase(secret) {
